@@ -8,7 +8,21 @@ Vue.use(Router);
 
 const router = new Router({
   routes,
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { selector: to.hash };
+    }
+    return { x: 0, y: 0 };
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('global beforeEach');
+  next();
 });
 
 new Vue({

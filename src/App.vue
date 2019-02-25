@@ -6,7 +6,9 @@
                 <hr>
                 <!-- <app-header></app-header> -->
                 <router-view name="top"></router-view>
-                <router-view></router-view>
+                <transition name="slide">
+                    <router-view></router-view>
+                </transition>
                 <router-view name="bottom"></router-view>
             </div>
         </div>
